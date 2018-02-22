@@ -8,7 +8,7 @@ githash=$(git rev-parse HEAD)
 NODE_ENV="production"
 lowercaseStackName=$(echo $stackName | tr '[:upper:]' '[:lower:]')
 
-export API=""
+export API="http://example.com"
 export API_KEY="someValue"
 export PUBLIC_URL="http://localhost:3000"
 #export PUBLIC_URL="https://$domain/$lowercaseStackName/$githash"

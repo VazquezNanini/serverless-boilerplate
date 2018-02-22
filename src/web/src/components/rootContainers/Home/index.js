@@ -44,7 +44,7 @@ export class Home extends Component<*, *> {
     return (
       <div className={styles}>
         It Works!
-        {publicUrl && `cdn: ${publicUrl}`}
+        {publicUrl && (<div>cdn: {publicUrl}</div>)}
       </div>
     );
   }
