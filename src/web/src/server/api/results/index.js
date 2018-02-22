@@ -12,7 +12,7 @@ router.get('/query', (req, res) => {
     }
   };
 
-  const reqUrl = req.url.replace('/query', '')
+  const reqUrl = req.url.replace('/query', '');
   const url = reqUrl ? `${process.env.API}${reqUrl}` : process.env.API;
   console.log('url', url);
 
