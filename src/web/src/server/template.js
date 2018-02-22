@@ -8,7 +8,7 @@ export default (content, js, css, storeData, helmet) => `
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#ea2914">
     ${helmet.meta.toString()}
-    <title>What Car? - New and Used Car Reviews, Car Deals</title>
+    <title>Title</title>
     <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="${css}" />

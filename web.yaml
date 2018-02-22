@@ -22,6 +22,9 @@ Parameters:
   DomainName:
     Description: domain name use in the api mappings
     Type: String
+  PublicUrl:
+    Description: public url for the static assets
+    Type: String    
 
 Resources:
 
@@ -42,6 +45,7 @@ Resources:
       Environment:
         Variables:
           BASE_URL: !Sub https://${DomainName}/
+          PUBLIC_URL: !Ref PublicUrl
 
   ApiGateway:
     Type: AWS::ApiGateway::RestApi

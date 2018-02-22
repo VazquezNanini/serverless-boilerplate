@@ -1,0 +1,4 @@
+// RESULTS
+export const FETCH_RESULTS = 'FETCH_RESULTS';
+export const ADD_RESULTS = 'ADD_RESULTS';
+export const ADD_RESULTS_FAILED = 'ADD_RESULTS_FAILED';

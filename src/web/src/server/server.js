@@ -8,11 +8,10 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 import { StaticRouter, matchPath } from 'react-router-dom';
-import App from 'rootContainers/App';
+import App from 'rootContainers/Home';
 import { Helmet } from 'react-helmet';
 import rootSaga from 'sagas';
 import { ports } from './app.conf.js';
-// API routes for different API endpoints.
 import applyApi from 'server/api';
 import * as reducers from 'reducers';
 import 'fetch-everywhere';
@@ -73,7 +72,7 @@ server.use((req, res) => {
           assets['main.js'],
           assets['main.css'],
           store.getState(),
-          Helmet.renderStatic() // NOTE: Must be placed after renderToString to get Helmet config
+          Helmet.renderStatic()
         )
       );
     });
