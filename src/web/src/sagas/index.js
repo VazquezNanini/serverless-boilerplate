@@ -47,7 +47,5 @@ export function* watchResultsRequests() {
  * @return {Generator} compilation of all sagas.
  */
 export default function* rootSaga() {
-  yield [
-    fork(watchResultsRequests)
-  ];
+  yield [fork(watchResultsRequests)];
 }

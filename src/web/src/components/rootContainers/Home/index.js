@@ -6,7 +6,6 @@ import * as Actions from 'actionTypes';
 
 import styles from 'rootContainers/Home.scss';
 
-
 const publicUrl = process.env.PUBLIC_URL || '';
 
 /**
@@ -15,14 +14,6 @@ const publicUrl = process.env.PUBLIC_URL || '';
  * @return {class} returns home instance
  */
 export class Home extends Component<*, *> {
-
-  /**
-   * @param {object} props - props passed
-   */
-  constructor(props: Object) {
-    super(props);
-  }
-
   /**
    * MapStateToProps implementation.
    * @return {object} new state object
@@ -50,7 +41,12 @@ export class Home extends Component<*, *> {
    * @return {JSX} - rendered Home page.
    */
   render(): Element<*> {
-    return (<div>It Works!</div>);
+    return (
+      <div className={styles}>
+        It Works!
+        {publicUrl && `cdn: ${publicUrl}`}
+      </div>
+    );
   }
 }
 

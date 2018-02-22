@@ -27,10 +27,14 @@ const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 // const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 const FileSizeReporter = require('../fileSizeReporter');
 const argv = require('yargs').argv;
-const requiredWebpackConfig =  argv.config ? argv.config : paths.webpackProdConfig;
+const requiredWebpackConfig = argv.config
+  ? argv.config
+  : paths.webpackProdConfig;
 const webpackConfig = require(requiredWebpackConfig);
 
-const buildFolderPath = argv.buildFolder ? path.resolve(argv.buildFolder) : paths.appBuild;
+const buildFolderPath = argv.buildFolder
+  ? path.resolve(argv.buildFolder)
+  : paths.appBuild;
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
@@ -102,7 +106,6 @@ function build(previousFileSizes) {
   let compiler = webpack(webpackConfig);
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
-
       if (err) {
         return reject(err);
       }
@@ -127,7 +130,7 @@ function build(previousFileSizes) {
       return resolve({
         stats,
         previousFileSizes,
-        warnings: messages.warnings,
+        warnings: messages.warnings
       });
     });
   });
@@ -136,6 +139,6 @@ function build(previousFileSizes) {
 function copyPublicFolder() {
   fs.copySync(paths.appPublic, buildFolderPath, {
     dereference: true,
-    filter: file => file !== paths.appHtml,
+    filter: file => file !== paths.appHtml
   });
 }

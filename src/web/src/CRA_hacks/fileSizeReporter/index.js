@@ -27,21 +27,20 @@ function printFileSizesAfterBuild(
 ) {
   var root = previousSizeMap.root;
   var sizes = previousSizeMap.sizes;
-  //It gets the stats object from the webpack build and it turns into a json obj.
+  // It gets the stats object from the webpack build and it turns into a json obj.
   var assets = webpackStats.toJson();
-  //If the exported webpack config file has multiple configurations (an array of config objects)
-  //it concatenates the arrays of assets generated
-  if(assets.hasOwnProperty('children')){
-    
+  // If the exported webpack config file has multiple configurations (an array of config objects)
+  // it concatenates the arrays of assets generated
+  if (assets.hasOwnProperty('children')) {
     let concatenateAssets = [];
 
-    assets.children.map( (currentAsset) => {
+    assets.children.map(currentAsset => {
       concatenateAssets = concatenateAssets.concat(currentAsset.assets);
     });
 
     assets = concatenateAssets;
   }
-  //Whether multiple or single config are provided, assets contains an array of all the assets generated
+  // Whether multiple or single config are provided, assets contains an array of all the assets generated
   // which need to be filtered and handle.
   assets = assets.filter(asset => /\.(js|css)$/.test(asset.name)).map(asset => {
     var fileContents = fs.readFileSync(path.join(root, asset.name));
@@ -52,7 +51,7 @@ function printFileSizesAfterBuild(
       folder: path.join(path.basename(buildFolder), path.dirname(asset.name)),
       name: path.basename(asset.name),
       size: size,
-      sizeLabel: filesize(size) + (difference ? ' (' + difference + ')' : ''),
+      sizeLabel: filesize(size) + (difference ? ' (' + difference + ')' : '')
     };
   });
   assets.sort((a, b) => b.size - a.size);
@@ -141,7 +140,7 @@ function measureFileSizesBeforeBuild(buildFolder) {
       }
       resolve({
         root: buildFolder,
-        sizes: sizes || {},
+        sizes: sizes || {}
       });
     });
   });
@@ -149,5 +148,5 @@ function measureFileSizesBeforeBuild(buildFolder) {
 
 module.exports = {
   measureFileSizesBeforeBuild: measureFileSizesBeforeBuild,
-  printFileSizesAfterBuild: printFileSizesAfterBuild,
+  printFileSizesAfterBuild: printFileSizesAfterBuild
 };

@@ -1,30 +1,29 @@
-import { Router } from "express";
-const axios = require("axios");
+import { Router } from 'express';
+const axios = require('axios');
 const router = Router();
 
 /**
  * Returns the list of results.
  */
-router.get("/query", (req, res) => {
+router.get('/query', (req, res) => {
   const options = {
     headers: {
-      "x-api-key": process.env.API_KEY
+      'x-api-key': process.env.API_KEY
     }
   };
-  const reqUrl = req.url.replace("/query", "");
-  const url = process.env.API + req.query;
 
-  console.log("url", url);
+  const url = process.env.API + req.query;
+  console.log('url', url);
 
   axios
     .get(url, options)
     .then(res => res.data)
     .then(results => {
-      return res.status(200).json(results)
+      return res.status(200).json(results);
     })
     .catch(err => {
-      console.log('Error', err.message, err.stack)
-      res.status(err.response.status).json(err.response.data)
+      console.log('Error', err.message, err.stack);
+      res.status(err.response.status).json(err.response.data);
     });
 });
 

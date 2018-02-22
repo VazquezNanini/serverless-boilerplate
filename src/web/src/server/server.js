@@ -66,15 +66,17 @@ server.use((req, res) => {
       </Provider>
     );
     sagaMiddleware.run(rootSaga).done.then(() => {
-      res.status(200).send(
-        template(
-          renderToString(html),
-          assets['main.js'],
-          assets['main.css'],
-          store.getState(),
-          Helmet.renderStatic()
-        )
-      );
+      res
+        .status(200)
+        .send(
+          template(
+            renderToString(html),
+            assets['main.js'],
+            assets['main.css'],
+            store.getState(),
+            Helmet.renderStatic()
+          )
+        );
     });
     renderToString(html);
     store.dispatch(END);
