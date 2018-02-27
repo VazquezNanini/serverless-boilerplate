@@ -3,7 +3,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Api boilerplate",
-    "description": "This api provides endpoints to data",
+    "description": "This api provides data endpoints",
     "version": "1.0"
   },
   "securityDefinitions" :  {
