@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Serverless React/Express Web boilerplate
+Description: Serverless React/Express boilerplate
 
 Parameters:
   StackName:
@@ -24,7 +24,7 @@ Parameters:
     Type: String
   PublicUrl:
     Description: public url for the static assets
-    Type: String    
+    Type: String
 
 Resources:
 

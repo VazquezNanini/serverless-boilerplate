@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Web CDN
+Description: CDN boilerplate
 
 Parameters:
   ACMCertificate:

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ -z $1 ] || [ -z $2 ] || [ -z $3 ]; then
+if [ -z $1 ] || [ -z $2 ] || [ -z $3 ] || [ -z $4 ]; then
     echo "Please provide stackName, a domain and bucket name"
-    echo "Example: ./deploy.sh johndoe mydomain.example.com myBucket"
+    echo "Example: ./deploy.sh johndoe mydomain.example.com myBucket myCdnBucket"
     echo "The domain should already be setup in ApiGateway custom domains."
     exit
 fi
@@ -14,6 +14,7 @@ function zipFile {
 lowercaseStackName=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 domain=$2
 s3Bucket=$3
+cdnBucket=$4
 stackName=$lowercaseStackName
 region="eu-west-1"
 templateFile="../web.yaml"
