@@ -51,6 +51,7 @@ Resources:
   ApiGateway:
     Type: AWS::ApiGateway::RestApi
     Properties:
+      MinimumCompressionSize: 0
       Body:
         swagger: 2.0
         info:
