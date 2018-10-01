@@ -111,28 +111,21 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - sts:AssumeRole
-      Path: /
-      Policies:
-        -
-          PolicyName: root
-          PolicyDocument:
-            Version: 2012-10-17
-            Statement:
-              -
-                Effect: Allow
-                Action:
-                - ec2:CreateNetworkInterface
-                - ec2:DescribeNetworkInterfaces
-                - ec2:DeleteNetworkInterface
-                - ec2:DetachNetworkInterface
-                - ec2:ModifyNetworkInterfaceAttribute
-                - ec2:ResetNetworkInterfaceAttribute
-                - logs:CreateLogGroup
-                - logs:CreateLogStream
-                - logs:PutLogEvents
-                - xray:PutTraceSegments
-                - xray:PutTelemetryRecords
-                Resource: '*'
+
+  LambdaPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyName: lambda-default
+      Path: '/'
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        - Effect: Allow
+          Action:
+          - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+          Resource: '*'
+      Roles:
+      - !Ref LambdaRole
 
   ApiKey:
     Type: AWS::ApiGateway::ApiKey

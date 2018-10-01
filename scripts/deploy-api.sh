@@ -31,13 +31,11 @@ rm $file
 
 # Create/Update stack
 echo "Rebuilding the stack"
-aws cloudformation describe-stacks --stack-name $stackName --output text --query 'Stacks[0].StackName' --region $region > /dev/null
+aws cloudformation describe-stacks --stack-name $stackName --output text --query 'Stacks[0].StackName' --region $region > /dev/null 2>&1
 if [ $? -eq 0 ]; then
   cfnCommand=update-stack
-  exit $?
   cfnWait=stack-update-complete
 else
-  echo Please ignore the previous message
   cfnCommand=create-stack
   cfnWait=stack-create-complete
 fi
